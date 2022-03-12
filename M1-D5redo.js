@@ -112,33 +112,33 @@ function upperFirst(str) {
 
 console.log(upperFirst ("strive"))
 
-/* EXERCISE 9
- Write a function called "cutString" which creates a new string without the first and last character of a given string passed as a parameter.
-*/
+// /* EXERCISE 9
+//  Write a function called "cutString" which creates a new string without the first and last character of a given string passed as a parameter.
+// */
 
-function cutString(str){
-    return str.slice(1, str.length - 1)
-}
+// function cutString(str){
+//     return str.slice(1, str.length - 1)
+// }
 
-console.log(cutString("Strive"))
+// console.log(cutString("Strive"))
 
-/* EXERCISE 10
- Write a function called "giveMeRandom" which accepts a number n and returns an array containing n random numbers between 0 and 10.
-*/
+// /* EXERCISE 10
+//  Write a function called "giveMeRandom" which accepts a number n and returns an array containing n random numbers between 0 and 10.
+// */
 
-function giveMeRandom(n) {
-    let arr = []
-    for (let i = 0; i <= n; i++){
+// function giveMeRandom(n) {
+//     let arr = []
+//     for (let i = 0; i <= n; i++){
 
-    let random = Math.floor(Math.random() * 10)
-    arr.push(random)
-    }
-    return arr
-}
+//     let random = Math.floor(Math.random() * 10)
+//     arr.push(random)
+//     }
+//     return arr
+// }
 
-console.log(giveMeRandom(6))
+// console.log(giveMeRandom(6))
 
 
-/* WHEN YOU ARE FINISHED
- Commit and push the code to your personal GitHub repository; then post the link of your commit on the Homework section of today's Eduflow.
-*/
+// /* WHEN YOU ARE FINISHED
+//  Commit and push the code to your personal GitHub repository; then post the link of your commit on the Homework section of today's Eduflow.
+// */

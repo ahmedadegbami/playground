@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+.red {
+            color: red
+        }        
+
+.green {
+            color: green;
+
+        }
+
+.hidden {
+    display: none;
+}
+        
+
+        
+
+        
+    </style>
+</head>
+<body>
+    <button id ="hideTag" onclick="getMorePs('ahmed ahmed')">Add 4 tags!!!</button>
+    <button onclick="toggleRedNode()">Toggle boy!!!</button>
+    <button onclick="toggleparaRedNode('red','green')"> Param testing </button>
+    <button onclick="sayIamGood()">Say it!!!</button>
+    
+
+    <p class =" red" onclick="toggleRedNode()">Ahmed 🚀</p> 
+    
+    <!-- I did it with emoji 🚀🚀🚀🚀🚀🚀🚀(cmd + ctrl + space ) -->
+    
+
+        <div class = "green">The First</div>
+        <div class = "green">The Second</div>
+    
+    
+<script>
+    function getMorePs(content){
+        for (let i = 0; i < 4; i++){
+            let newtag = document.createElement("p")
+            newtag.innerText = content
+            newtag.classList.add("red")
+            let newDivNode = document.createElement("div")
+            newDivNode.appendChild(newtag)
+            let bodyNode = document.getElementsByTagName("body")[0]
+            bodyNode.appendChild(newDivNode)
+            document.getElementById("hideTag").classList.add("hidden")
+          
+
+            
+
+            
+            
+        }
+        
+}
+    
+    
+    function toggleRedNode(){
+        let redNode = document.getElementsByClassName("red")
+        for (let i = 0; i < redNode.length; i++) {
+            redNode[i].classList.toggle("green")
+
+
+    } 
+    }
+
+
+    function toggleparaRedNode(param1, param2) {
+            let redNode = document.getElementsByClassName(param1)
+            for (let i = 0; i < redNode.length; i++) {
+                redNode[i].classList.toggle(param2)
+
+            } 
+}
+    toggleRedNode()
+
+    function sayIamGood() {
+        console.log ("I am the baddest programmer")
+    }
+    
+        
+    
+
+    
+
+
+    // let newTagNode = document.createElement("p")
+    // newTagNode.innerText = "I created the tag"
+    // newTagNode.style.color = "red"
+    // let newDivNode = document.createElement("div")
+    // newDivNode.appendChild(newTagNode)
+    // let bodyNode = document.getElementsByTagName("body")[0]
+    // bodyNode.appendChild(newDivNode)
+
+    
+
+</script>
+</body>
+</html>
