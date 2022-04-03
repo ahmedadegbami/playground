@@ -1,67 +1,71 @@
 <html>
-    <head>
-        <style>
+  <head>
+    <style>
+      html {
+        font-family: sans-serif;
+        color: #333;
+      }
 
-                html {
-                    font-family: sans-serif;
-                    color: #333;
-                }
+      body {
+        max-width: 500px;
+        margin: 0 auto;
+        margin-top: 20px;
+        padding: 0 15px;
+      }
 
-                body{
-                    max-width: 500px;
-                    margin: 0 auto;
-                    margin-top: 20px;
-                    padding: 0 15px;
-                }
+      .red {
+        background-color: red;
+      }
 
-                .red {
-                    background-color: red;
-                }
+      .blue {
+        background-color: blue;
+      }
 
-                .blue {
-                    background-color: blue;
-                }
+      .circle {
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Events & Inputs</h1>
+    <input type="text" onkeydown="logKeyPressed(event)" />
+    <input type="text" />
+    <button onclick="moveDown()">move</button>
+    <div
+      class="red circle"
+      onclick="keyPush(event)"
+      onmouseover="toggleBlueBackground(event)"
+      onmouseleave="toggleBlueBackground(event)"
+    ></div>
+    <script>
+      function my_code() {
+        alert(" Alert inside my_code function");
+      }
 
-                .circle {
-                    width: 50px;
-                    height: 50px;
-                    border-radius: 50px;
-                }
-        </style>
-    </head>
-    <body>
-        <h1>Events & Inputs</h1>
-        <input type="text" onkeydown="logKeyPressed(event)">
-        <div class="red circle" onmouseover="toggleBlueBackground(event)" onmouseleave="toggleBlueBackground(event)"></div>
-    <Script>
-    
-    
+      window.onload = my_code;
 
-// function my_code() {
-//     alert(" Alert inside my_code function");
-// }
+      function logKeyPressed(e) {
+        let keypressed = e.key;
+        console.log(keypressed);
 
-// window.onload = my_code();
-    
+        let circle = document.querySelector(".circle");
 
-    function logKeyPressed(e) {
-        let keypressed = e.key
-        console.log(keypressed)
-
-        let circle = document.querySelector('.circle')
-
-        if (keypressed === 'ArrowDown') {
-            circle.style.marginTop += 10
+        if (keypressed === "ArrowDown") {
+          circle.style.marginTop = 10;
         }
+      }
 
-    }
+      function toggleBlueBackground(e) {
+        let circleNode = e.target;
+        circleNode.classList.toggle("blue");
+      }
 
-
-
-    function toggleBlueBackground(e) {
-        let circleNode = e.target
-        circleNode.classList.toggle("blue")
-    }
-        </Script>
-    </body>
+      function keyPush(e) {
+        let circler = e.target;
+        circler.style.marginTop = 10;
+      }
+    </script>
+  </body>
 </html>
