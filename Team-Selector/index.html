@@ -31,9 +31,9 @@
         <div class="col-12 col-md-6 py-4 d-flex align-items-center">
           Team:
           <div class="ml-auto">
-            <button class="btn btn-primary">-</button>
+            <button class="btn btn-primary" onclick="removeteam()">-</button>
             <span id="teams-number" class="d-inline-block mx-3">2</span>
-            <button class="btn btn-primary">+</button>
+            <button class="btn btn-primary" onclick="addteam()">+</button>
           </div>
         </div>
       </div>
@@ -48,7 +48,7 @@
               <li class="list-group-item">Adam</li>
             </ul>
 
-            <button class="mx-auto m-2">Assign</button>
+            <button class="mx-auto m-2" onclick="assign()">Assign</button>
           </div>
         </div>
       </div>
