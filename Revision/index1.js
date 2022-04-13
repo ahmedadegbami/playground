@@ -48,6 +48,7 @@
 //         }).catch(err => console.error(err));
 
 // }
+let loadedImages = []
 
 const loadSongs = query => {
     fetch('https://striveschool-api.herokuapp.com/api/deezer/search?q=' + query, {
@@ -57,7 +58,9 @@ const loadSongs = query => {
         .then(songs=> {
     
             let songsList = songs.data
-            console.log(songsList)
+            // console.log(songsList)
+
+            loadedImages = [...songsList]
     
             let row = document.querySelector(".row")
             row.innerHTML = ""
@@ -69,7 +72,7 @@ const loadSongs = query => {
                     <img src=${song.album.cover_small} class="card-img-top" alt="..." />
                     <div class="card-body">
                         <h5 class="card-title">${song.title}</h5>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <a href="./artist.html?songID=${song.artist.id}" class="btn btn-primary">${song.artist.name}</a>
                     </div>
                     </div>`
     
@@ -96,17 +99,40 @@ const loadSongs = query => {
 }
 
 let imputLoad = event => {
-    loadSongs(event.target.value)
+    let searchvalue = event.target.value
+
+
+     let row = document.querySelector(".row")
+            row.innerHTML = ""
+             loadedImages.filter(song => song.title.toLowerCase().includes(searchvalue)) 
+             .forEach(song => {
+                let col = document.createElement("div")
+                col.classList.add("col-3")
+                col.innerHTML = `<div class="card">
+            
+                    <img src=${song.album.cover_small} class="card-img-top" alt="..." />
+                    <div class="card-body">
+                        <h5 class="card-title">${song.title}</h5>
+                        <a href="./artist.html?songID=${song.artist.id}" class="btn btn-primary">${song.artist.name}</a>
+                    </div>
+                    </div>`
+    
+                    row.appendChild(col)
+                
+            }).catch(err => console.error(err));
+
+            
 }
 
     
            
 
 
-// window.onload = () => {
-//     loadSongs("eminem")
+window.onload = () => {
+    loadSongs("fireboy")
+    console.log("LOADED IMG", loadedImages)
     
-// }
+}
 
 // const arrOfPeople = [
 //     {name: "Ahmed", age: 50, salary: 360},
