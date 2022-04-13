@@ -1,4 +1,5 @@
 let findSong = (event) => {
+   let searchSong = event.target.value
     
     fetch('https://striveschool-api.herokuapp.com/api/deezer/search?q=eminem', {
         method: "GET"
@@ -10,20 +11,38 @@ let findSong = (event) => {
             console.log(songsList)
     
             let row = document.querySelector(".row")
+            row.innerHTML = ""
 
-            row.innerHTML = songsList.filter(song => song.title.includes(event.target.value))
-            .map(song => 
-              
-               `<div class="col-3">
-               <div class="card">
+             songsList.filter(song => song.title.toLowerCase().includes(searchSong.toLowerCase()))
+             .forEach(song => {
+                let col = document.createElement("div")
+                col.classList.add("col-3")
+                col.innerHTML = `<div class="card">
             
                     <img src=${song.album.cover_small} class="card-img-top" alt="..." />
                     <div class="card-body">
                         <h5 class="card-title">${song.title}</h5>
                         <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
-                    </div>
-                    </div>`).join("");
+                    </div>`
+    
+                    row.appendChild(col)
+                
+            });
+
+            // row.innerHTML = songsList.filter(song => song.title.toLowerCase().includes(searchSong.toLowerCase()))
+            // .map(song => 
+              
+            //    `<div class="col-3">
+            //    <div class="card">
+            
+            //         <img src=${song.album.cover_small} class="card-img-top" alt="..." />
+            //         <div class="card-body">
+            //             <h5 class="card-title">${song.title}</h5>
+            //             <a href="#" class="btn btn-primary">Go somewhere</a>
+            //         </div>
+            //         </div>
+            //         </div>`).join("");
 
         
         }).catch(err => console.error(err));
@@ -41,19 +60,34 @@ const loadSongs = () => {
             console.log(songsList)
     
             let row = document.querySelector(".row")
-           row.innerHTML = songsList.
-            map(song => 
-              
-               `<div class="col-3">
-               <div class="card">
+             songsList.forEach(song => {
+                let col = document.createElement("div")
+                col.classList.add("col-3")
+                col.innerHTML = `<div class="card">
             
                     <img src=${song.album.cover_small} class="card-img-top" alt="..." />
                     <div class="card-body">
                         <h5 class="card-title">${song.title}</h5>
                         <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
-                    </div>
-                    </div>`).join("");
+                    </div>`
+    
+                    row.appendChild(col)
+                
+            });
+        //    row.innerHTML = songsList.
+        //     map(song => 
+              
+        //        `<div class="col-3">
+        //        <div class="card">
+            
+        //             <img src=${song.album.cover_small} class="card-img-top" alt="..." />
+        //             <div class="card-body">
+        //                 <h5 class="card-title">${song.title}</h5>
+        //                 <a href="#" class="btn btn-primary">Go somewhere</a>
+        //             </div>
+        //             </div>
+        //             </div>`).join("");
 
 
              }).catch(err => console.error(err));
@@ -61,21 +95,7 @@ const loadSongs = () => {
 }
             
     
-            // songsList.forEach(song => {
-            //     let col = document.createElement("div")
-            //     col.classList.add("col-3")
-            //     col.innerHTML = `<div class="card">
-            
-            //         <img src=${song.album.cover_small} class="card-img-top" alt="..." />
-            //         <div class="card-body">
-            //             <h5 class="card-title">${song.title}</h5>
-            //             <a href="#" class="btn btn-primary">Go somewhere</a>
-            //         </div>
-            //         </div>`
-    
-            //         row.appendChild(col)
-                
-            // });
+           
 
 
 window.onload = () => {
