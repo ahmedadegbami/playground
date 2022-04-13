@@ -72,7 +72,7 @@ const loadSongs = query => {
                     <img src=${song.album.cover_small} class="card-img-top" alt="..." />
                     <div class="card-body">
                         <h5 class="card-title">${song.title}</h5>
-                        <a href="./artist.html?songID=${song.artist.id}" class="btn btn-primary">${song.artist.name}</a>
+                        <a href="./artist.html?songID=${song.album.id}" class="btn btn-primary">${song.artist.name}</a>
                     </div>
                     </div>`
     
@@ -113,7 +113,7 @@ let imputLoad = event => {
                     <img src=${song.album.cover_small} class="card-img-top" alt="..." />
                     <div class="card-body">
                         <h5 class="card-title">${song.title}</h5>
-                        <a href="./artist.html?songID=${song.artist.id}" class="btn btn-primary">${song.artist.name}</a>
+                        <a href="./artist.html?songID=${song.album.id}" class="btn btn-primary">${song.artist.name}</a>
                     </div>
                     </div>`
     
