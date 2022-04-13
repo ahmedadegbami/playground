@@ -21,11 +21,14 @@
   <body>
     <div class="container">
       <h1 class="display-4">Eminem Baba</h1>
+      <button class="btn btn-primary" onclick="loadSongs(`queen`)">
+        Show pictures
+      </button>
       <input
         type="text"
         id="seach"
         class="form-control"
-        oninput="findSong(event)"
+        onchange="imputLoad(event)"
       />
       <div class="row"></div>
     </div>

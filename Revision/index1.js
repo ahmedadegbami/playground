@@ -1,34 +1,34 @@
-let findSong = (event) => {
-   let searchSong = event.target.value
+// let findSong = (event) => {
+//    let searchSong = event.target.value
     
-    fetch('https://striveschool-api.herokuapp.com/api/deezer/search?q=eminem', {
-        method: "GET"
-    })
-        .then(response => response.json())
-        .then(songs=> {
+//     fetch('https://striveschool-api.herokuapp.com/api/deezer/search?q=eminem', {
+//         method: "GET"
+//     })
+//         .then(response => response.json())
+//         .then(songs=> {
     
-            let songsList = songs.data
-            console.log(songsList)
+//             let songsList = songs.data
+//             console.log(songsList)
     
-            let row = document.querySelector(".row")
-            row.innerHTML = ""
+//             let row = document.querySelector(".row")
+//             row.innerHTML = ""
 
-             songsList.filter(song => song.title.toLowerCase().includes(searchSong.toLowerCase()))
-             .forEach(song => {
-                let col = document.createElement("div")
-                col.classList.add("col-3")
-                col.innerHTML = `<div class="card">
+//              songsList.filter(song => song.title.toLowerCase().includes(searchSong.toLowerCase()))
+//              .forEach(song => {
+//                 let col = document.createElement("div")
+//                 col.classList.add("col-3")
+//                 col.innerHTML = `<div class="card">
             
-                    <img src=${song.album.cover_small} class="card-img-top" alt="..." />
-                    <div class="card-body">
-                        <h5 class="card-title">${song.title}</h5>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                    </div>`
+//                     <img src=${song.album.cover_small} class="card-img-top" alt="..." />
+//                     <div class="card-body">
+//                         <h5 class="card-title">${song.title}</h5>
+//                         <a href="#" class="btn btn-primary">Go somewhere</a>
+//                     </div>
+//                     </div>`
     
-                    row.appendChild(col)
+//                     row.appendChild(col)
                 
-            });
+//             });
 
             // row.innerHTML = songsList.filter(song => song.title.toLowerCase().includes(searchSong.toLowerCase()))
             // .map(song => 
@@ -45,12 +45,12 @@ let findSong = (event) => {
             //         </div>`).join("");
 
         
-        }).catch(err => console.error(err));
+//         }).catch(err => console.error(err));
 
-}
+// }
 
-const loadSongs = () => {
-    fetch('https://striveschool-api.herokuapp.com/api/deezer/search?q=eminem', {
+const loadSongs = query => {
+    fetch('https://striveschool-api.herokuapp.com/api/deezer/search?q=' + query, {
         method: "GET"
     })
         .then(response => response.json())
@@ -60,6 +60,7 @@ const loadSongs = () => {
             console.log(songsList)
     
             let row = document.querySelector(".row")
+            row.innerHTML = ""
              songsList.forEach(song => {
                 let col = document.createElement("div")
                 col.classList.add("col-3")
@@ -93,15 +94,19 @@ const loadSongs = () => {
              }).catch(err => console.error(err));
 
 }
-            
+
+let imputLoad = event => {
+    loadSongs(event.target.value)
+}
+
     
            
 
 
-window.onload = () => {
-    loadSongs()
+// window.onload = () => {
+//     loadSongs("eminem")
     
-}
+// }
 
 // const arrOfPeople = [
 //     {name: "Ahmed", age: 50, salary: 360},
