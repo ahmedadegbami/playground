@@ -50,7 +50,11 @@
 // }
 let loadedImages = []
 
-const loadSongs = query => {
+
+let searchHistory = window.localStorage.getItem("query")
+let defaultartist = searchHistory? searchHistory: "pasuma"
+
+const loadSongs = (query = defaultartist) => {
     fetch('https://striveschool-api.herokuapp.com/api/deezer/search?q=' + query, {
         method: "GET"
     })
@@ -77,6 +81,9 @@ const loadSongs = query => {
                     </div>`
     
                     row.appendChild(col)
+
+                    let h1 = document.querySelector("h1")
+                    h1.innerHTML = song.artist.name
                 
             });
         //    row.innerHTML = songsList.
@@ -98,28 +105,35 @@ const loadSongs = query => {
 
 }
 
-let imputLoad = event => {
-    let searchvalue = event.target.value
+let inputLoad = event => {
+
+    defaultartist = event.target.value
+
+    window.localStorage.setItem("query", defaultartist)
+
+    loadSongs()
 
 
-     let row = document.querySelector(".row")
-            row.innerHTML = ""
-             loadedImages.filter(song => song.title.toLowerCase().includes(searchvalue)) 
-             .forEach(song => {
-                let col = document.createElement("div")
-                col.classList.add("col-3")
-                col.innerHTML = `<div class="card">
+// -------This is if i want to filter in the already artist selected because I pushed to a row----------
+    //  let row = document.querySelector(".row")
+
+    //         row.innerHTML = ""
+    //          loadedImages.filter(song => song.title.toLowerCase().includes(searchvalue)) 
+    //          .forEach(song => {
+    //             let col = document.createElement("div")
+    //             col.classList.add("col-3")
+    //             col.innerHTML = `<div class="card">
             
-                    <img src=${song.album.cover_small} class="card-img-top" alt="..." />
-                    <div class="card-body">
-                        <h5 class="card-title">${song.title}</h5>
-                        <a href="./artist.html?songID=${song.album.id}" class="btn btn-primary">${song.artist.name}</a>
-                    </div>
-                    </div>`
+    //                 <img src=${song.album.cover_small} class="card-img-top" alt="..." />
+    //                 <div class="card-body">
+    //                     <h5 class="card-title">${song.title}</h5>
+    //                     <a href="./artist.html?songID=${song.album.id}" class="btn btn-primary">${song.artist.name}</a>
+    //                 </div>
+    //                 </div>`
     
-                    row.appendChild(col)
+    //                 row.appendChild(col)
                 
-            }).catch(err => console.error(err));
+    //         }).catch(err => console.error(err));
 
             
 }
@@ -129,8 +143,8 @@ let imputLoad = event => {
 
 
 window.onload = () => {
-    loadSongs("fireboy")
-    console.log("LOADED IMG", loadedImages)
+    loadSongs()
+   
     
 }
 
